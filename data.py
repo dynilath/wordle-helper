@@ -9,7 +9,7 @@ import pattern
 
 data_dir = os.path.join(os.getcwd(), "data")
 
-source_js_file = os.path.join(os.getcwd(), "main.bfba912f.js")
+source_js_file = os.path.join(os.getcwd(), "main.js")
 
 possible_words_file = os.path.join(data_dir, "possible_words.txt")
 allowed_words_file = os.path.join(data_dir, "allowed_words.txt")
@@ -19,8 +19,9 @@ possible_words_with_entropy_file = os.path.join(
 
 def get_word_from_source(file, signature):
     if not os.path.exists(file):
-        print("Please downloads the javascript source from the wordle website and paste it in %s." % os.getcwd())
+        print("Please downloads the javascript source from the wordle website first.")
         print("You can find a script named \"main.<some hex digits>.js\" from the html source.")
+        print("Rename it to main.js then paste it in %s." % os.getcwd())
         exit(1)
     text = ""
     with open(file, "r", encoding="utf8") as fp:
