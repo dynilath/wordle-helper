@@ -31,13 +31,25 @@ def filter_pattern(pattern, guess, src_list):
 
 
 def match_pattern(guess, target):
+    v = [0, 0, 0, 0, 0]
+    vret = [0, 0, 0, 0, 0]
+
+    for i in range(5):
+        if guess[i] == target[i]:
+            v[i] = 2
+            vret[i] = 2
+
+    for i in range(5):
+        for j in range(5):
+            if v[j] > 0:
+                continue
+            elif guess[i] == target[j]:
+                v[j] = 1
+                vret[i] = 1
+                break
+
     ret = 0
     for i in range(5):
-        v = 0
-        if guess[i] == target[i]:
-            v = 2
-        elif target.find(guess[i]) >= 0:
-            v = 1
         ret *= 3
-        ret += v
+        ret += vret[i]
     return ret
